@@ -1,0 +1,27 @@
+open bash in backend Folder
+Type:
+
+
+node
+
+const bcrypt = require('bcryptjs');
+bcrypt.hashSync('your-password', 10);
+
+
+
+Open SQLite with Impacto Database and go to execute SQL
+Type:
+
+
+INSERT INTO users (name, email, password, role)
+VALUES (
+  'Name',
+  'Email',
+  '$2a$10$4bo6HdBEyk6acazgVPrHAeDZ3RmsGdSvBok7zHP2iqeTxICQEm41a',
+  'admin'
+);
+
+
+#########################################################
+
+DONT FORGET TO SAVE IN DATA BASE [ FILE -> WRITE CHANGES ]
