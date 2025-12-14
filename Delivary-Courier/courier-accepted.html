@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Deliveries</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/delivaryCourier/courier-accepted.css">
+</head>
+<body>
+  <div class="sidebar">
+    <h4 class="text-center">Courier Panel</h4>
+    <a href="courier-dashboard.html">Dashboard</a>
+    <a href="courier-available.html">Available Deliveries</a>
+    <a href="courier-accepted.html" class="active">My Deliveries</a>
+    <a href="../Delivary-Courier/courier-delivery-History.html">Delivery History</a>
+    <a href="../Auth/index-auth-login.html">Logout</a>
+  </div>
+
+  <div class="content">
+    <h2>My Deliveries</h2>
+
+    <div class="card-box mb-3">
+      <h5>Donation #9001</h5>
+      <p class="mb-1 text-muted">Pickup: Restaurant A</p>
+      <p class="mb-1 text-muted">Drop: Hope Foundation</p>
+      <p class="mb-1"><strong>Status:</strong> <span class="status-onway">On The Way</span></p>
+      <div class="mt-3 d-flex gap-2">
+        <button class="btn btn-success" onclick="markDelivered('9001')">Mark Delivered</button>
+        <a href="#" class="btn btn-outline-secondary">Navigation</a>
+      </div>
+    </div>
+
+    <div class="card-box mb-3">
+      <h5>Donation #9002</h5>
+      <p class="mb-1 text-muted">Pickup: Restaurant B</p>
+      <p class="mb-1 text-muted">Drop: Charity Care</p>
+      <p class="mb-1"><strong>Status:</strong> <span class="status-waiting">Waiting Pickup</span></p>
+      <div class="mt-3 d-flex gap-2">
+        <button class="btn btn-success" onclick="markDelivered('9002')">Mark Delivered</button>
+        <a href="#" class="btn btn-outline-secondary">Navigation</a>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="../js/delivaryCourier/courier-accepted.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

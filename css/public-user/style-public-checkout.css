@@ -1,0 +1,38 @@
+body { 
+    background: #f7f7f7; 
+}
+
+/* Main Box */
+.checkout-box {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.08);
+}
+
+/* Navbar */
+.navbar-custom {
+    background-color: #1aa86d !important;
+}
+
+.navbar-custom .nav-link,
+.navbar-custom .navbar-brand {
+    color: #fff !important;
+}
+
+.navbar-custom .nav-link:hover {
+    opacity: 0.85;
+}
+
+/* Main Button */
+.btn-main {
+    background-color: #1aa86d;
+    border-color: #1aa86d;
+    color: #fff;
+}
+
+.btn-main:hover {
+    background-color: #16945e;
+    border-color: #16945e;
+    color: #fff;
+}

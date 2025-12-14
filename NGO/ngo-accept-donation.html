@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Accepted Donations</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="/css/ngo/style-ngo-accepte-donation.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h4 class="text-center mb-4">NGO Panel</h4>
+
+        <a href="./ngo-dashboard.html">Dashboard</a>
+        <a href="./ngo-available-donations.html">Available Donations</a>
+        <a href="./ngo-accept-donation.html" class="active">Accepted Donations</a>
+        <a href="./ngo-delivered.html">Delivered</a>
+        <a href="../settings.html">Settings</a>
+        <a href="../Auth/index-auth-login.html">Logout</a>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+
+        <h2 class="mb-4">Accepted Donations</h2>
+
+        <div class="card-box">
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Donation ID</th>
+                        <th>Restaurant</th>
+                        <th>Food Type</th>
+                        <th>Quantity</th>
+                        <th>Accepted On</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>#7001</td>
+                        <td>Restaurant A</td>
+                        <td>Hot Meals</td>
+                        <td>20</td>
+                        <td>2025-01-10</td>
+                        <td><span class="badge bg-info">On The Way</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>#7002</td>
+                        <td>Restaurant C</td>
+                        <td>Bread</td>
+                        <td>30</td>
+                        <td>2025-01-12</td>
+                        <td><span class="badge bg-warning">Waiting Courier</span></td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <!-- External JS -->
+    <script src="../js/ngo/script-ngo-accepted-donations.js"></script>
+
+</body>
+</html>

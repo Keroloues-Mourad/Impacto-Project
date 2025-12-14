@@ -1,0 +1,57 @@
+body {
+    background: #f6f7fb;
+}
+
+.edit-box {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    max-width: 650px;
+    margin: 40px auto;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+}
+
+.profile-img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #1aa86d;
+}
+
+/* Custom Navbar */
+.navbar-custom {
+    background-color: #1aa86d !important;
+}
+
+.navbar-custom .nav-link {
+    color: #fff !important;
+    font-weight: 500;
+}
+
+.navbar-custom .nav-link:hover {
+    opacity: 0.8;
+}
+
+/* Main Button */
+.btn-main {
+    background-color: #1aa86d !important;
+    border-color: #1aa86d !important;
+    color: #fff !important;
+    border-radius: 10px;
+    padding: 12px;
+    font-weight: 500;
+    transition: 0.25s;
+}
+
+.btn-main:hover {
+    background-color: #179860 !important;
+    border-color: #179860 !important;
+    transform: translateY(-2px);
+}
+
+/* Secondary Button */
+.btn-secondary {
+    border-radius: 10px;
+    padding: 12px;
+}

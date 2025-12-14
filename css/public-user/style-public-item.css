@@ -1,0 +1,43 @@
+body {
+    background: #f6f6f6;
+}
+
+.details-box {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.08);
+}
+
+.food-img {
+    width: 100%;
+    border-radius: 12px;
+    height: 300px;
+    object-fit: cover;
+}
+
+/* Navbar Color */
+.bg-primary {
+    background-color: #1aa86d !important;
+}
+
+.navbar .nav-link:hover {
+    color: #e9ffe7 !important;
+}
+
+/* Button Color */
+.custom-btn {
+    background-color: #1aa86d !important;
+    border-color: #1aa86d !important;
+    color: #fff !important;
+    border-radius: 10px;
+    padding: 12px;
+    font-weight: 500;
+    transition: 0.25s ease;
+}
+
+.custom-btn:hover {
+    background-color: #179860 !important;
+    border-color: #179860 !important;
+    transform: translateY(-2px);
+}

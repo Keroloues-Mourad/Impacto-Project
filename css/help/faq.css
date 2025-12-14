@@ -1,0 +1,25 @@
+body {
+    background: #f8f9fa;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar {
+    background-color: #1aa86d !important;
+}
+
+.faq-box {
+    background: #fff;
+    padding: 30px;
+    border-radius: 14px;
+    margin-top: 40px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    border-top: 4px solid #1aa86d;
+}
+
+h2, h5 {
+    color: #1aa86d;
+}
+
+a, a:hover {
+    color: #1aa86d;
+}

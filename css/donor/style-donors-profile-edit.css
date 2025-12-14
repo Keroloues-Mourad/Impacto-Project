@@ -1,0 +1,42 @@
+body {
+    background: #f4f6f9;
+}
+
+.edit-box {
+    background: white;
+    padding: 30px;
+    max-width: 700px;
+    margin: 40px auto;
+    border-radius: 16px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+}
+
+.profile-img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 5px solid #1aa86d;
+    object-fit: cover;
+}
+
+.btn-save {
+    background-color: #1aa86d;
+    border-color: #1aa86d;
+    color: #fff;
+}
+.btn-save:hover {
+    background-color: #16945e;
+    border-color: #16945e;
+    color: #fff;
+}
+
+.btn-cancel {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: #fff;
+}
+.btn-cancel:hover {
+    background-color: #5a6268;
+    border-color: #5a6268;
+    color: #fff;
+}

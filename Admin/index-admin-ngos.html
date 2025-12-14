@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Manage NGOs</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="/css/admin/styles-admin-ngos.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h4 class="text-center mb-4">Admin Panel</h4>
+        <a href="./index-admin-dashborad.html">Dashboard</a>
+        <a href="./index-admin-resturant.html">Manage Restaurants</a>
+        <a href="./index-admin-ngos.html" class="active">Manage NGOs</a>
+        <a href="./index-admin-user.html">Manage Users</a>
+        <a href="./index-admin-donations.html">Donations</a>
+        <a href="./index-admin-lastorder.html">Last Order</a>
+        <a href="#">Reports</a>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <h2 class="mb-4">Manage NGOs</h2>
+
+        <!-- Search -->
+        <div class="card card-box mb-4 shadow-sm">
+            <div class="row">
+                <div class="col-md-8">
+                    <input type="text" id="search" class="form-control" placeholder="Search NGO name...">
+                </div>
+                <div class="col-md-4 text-end">
+                    <button class="btn btn-primary">Add New NGO</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- NGOs Table -->
+        <div class="card card-box shadow-sm">
+            <h5 class="mb-3">Approved NGOs</h5>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NGO Name</th>
+                        <th>Email</th>
+                        <th>Verified</th>
+                        <th>Accepted Donations</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>101</td>
+                        <td>Hope Foundation</td>
+                        <td>hope@gmail.com</td>
+                        <td><span class="badge bg-success">Verified</span></td>
+                        <td>56</td>
+                        <td>
+                            <button class="btn btn-sm btn-info text-white">View</button>
+                            <button class="btn btn-sm btn-warning">Edit</button>
+                            <button class="btn btn-sm btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>102</td>
+                        <td>Charity Care</td>
+                        <td>care@ngo.org</td>
+                        <td><span class="badge bg-secondary">Pending</span></td>
+                        <td>18</td>
+                        <td>
+                            <button class="btn btn-sm btn-info text-white">View</button>
+                            <button class="btn btn-sm btn-warning">Edit</button>
+                            <button class="btn btn-sm btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (with Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- External JavaScript -->
+    <script src="../js/admin/script-admin-ngos .js"></script>
+</body>
+
+</html>

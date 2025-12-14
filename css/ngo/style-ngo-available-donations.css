@@ -1,0 +1,38 @@
+body {
+    background: #f2f2f2;
+}
+
+.sidebar {
+    width: 240px;
+    height: 100vh;
+    position: fixed;
+    background: #1aa86d;
+    color: #fff;
+    padding-top: 25px;
+}
+
+.sidebar a {
+    color: #fff;
+    padding: 12px;
+    display: block;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-bottom: 8px;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    background: rgba(255,255,255,0.2);
+}
+
+.content {
+    margin-left: 250px;
+    padding: 25px;
+}
+
+.card-box {
+    padding: 25px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.07);
+}

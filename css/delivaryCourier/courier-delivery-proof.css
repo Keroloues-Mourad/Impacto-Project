@@ -1,0 +1,51 @@
+body { background: #f6f7fb; }
+
+/* Sidebar */
+.sidebar {
+    width: 240px;
+    height: 100vh;
+    position: fixed;
+    background: #1aa86d; 
+    padding: 25px;
+    color: #fff;
+}
+.sidebar h4 { margin-bottom: 30px; }
+.sidebar a {
+    color: #fff;
+    display: block;
+    padding: 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: 0.2s;
+}
+.sidebar a:hover, .sidebar a.active {
+    background: rgba(255,255,255,0.2);
+}
+
+/* Content */
+.content { margin-left: 260px; padding: 30px; }
+
+/* Card */
+.proof-box {
+    background: #fff;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.07);
+}
+
+/* Buttons */
+.btn-main {
+    background-color: #1aa86d !important;
+    border-color: #1aa86d !important;
+    color: #fff !important;
+    border-radius: 10px;
+    padding: 12px;
+    font-weight: 500;
+    transition: 0.25s;
+}
+.btn-main:hover {
+    background-color: #157347 !important;
+    border-color: #157347 !important;
+    transform: translateY(-2px);
+}

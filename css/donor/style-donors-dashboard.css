@@ -1,0 +1,77 @@
+body { background: #f6f6f6; }
+
+/* Sidebar */
+.sidebar {
+    width: 240px;
+    height: 100vh;
+    position: fixed;
+    background: #1aa86d;
+    color: #fff;
+    padding-top: 25px;
+}
+.sidebar a {
+    text-decoration: none;
+    color: #fff;
+    padding: 12px 18px;
+    display: block;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+.sidebar a:hover {
+    background: rgba(255,255,255,0.2);
+}
+.sidebar a.active {
+    background: rgba(255,255,255,0.3);
+}
+
+.profile-link {
+    margin-top: 350px;
+}
+
+/* Content */
+.content {
+    margin-left: 250px;
+    padding: 25px;
+}
+
+/* Card Boxes */
+.card-box {
+    padding: 20px;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    transition: 0.2s;
+}
+.card-box:hover {
+    transform: translateY(-3px);
+}
+
+/* Buttons */
+.btn-custom {
+    background-color: #1aa86d;
+    border-color: #1aa86d;
+    color: #fff;
+}
+.btn-custom:hover {
+    background-color: #16945e;
+    border-color: #16945e;
+}
+
+/* Badge Colors */
+.badge-pending { background-color: #ffc107; }
+.badge-accepted { background-color: #1aa86d; }
+.badge-rejected { background-color: #dc3545; }
+
+/* Responsive Sidebar */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    .content {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+}

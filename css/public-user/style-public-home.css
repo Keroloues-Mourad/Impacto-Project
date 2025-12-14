@@ -1,0 +1,47 @@
+body { 
+    background: #f7f7f7; 
+}
+
+/* Cards */
+.card-box {
+    padding: 15px;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    transition: .2s;
+}
+.card-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+}
+
+.food-img {
+    width: 100%;
+    border-radius: 12px;
+    height: 180px;
+    object-fit: cover;
+}
+
+/* Navbar (custom green) */
+.navbar-custom {
+    background-color: #1aa86d !important;
+}
+.navbar-custom .nav-link,
+.navbar-custom .navbar-brand {
+    color: white !important;
+}
+.navbar-custom .nav-link:hover {
+    opacity: 0.8;
+}
+
+/* Buttons */
+.btn-main {
+    background-color: #1aa86d;
+    border-color: #1aa86d;
+    color: #fff;
+}
+.btn-main:hover {
+    background-color: #16945e;
+    border-color: #16945e;
+    color: #fff;
+}

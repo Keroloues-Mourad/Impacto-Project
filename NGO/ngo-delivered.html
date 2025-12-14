@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Delivered Donations</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="/css/ngo/style-ngo-delivered.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h4 class="text-center mb-4">NGO Panel</h4>
+
+        <a href="./ngo-dashboard.html">Dashboard</a>
+        <a href="./ngo-available-donations.html">Available Donations</a>
+        <a href="./ngo-accept-donation.html" class="active">Accepted Donations</a>
+        <a href="./ngo-delivered.html">Delivered</a>
+        <a href="../settings.html">Settings</a>
+        <a href="../Auth/index-auth-login.html">Logout</a>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+
+        <h2 class="mb-4">Delivered Donations</h2>
+
+        <div class="card-box">
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Donation ID</th>
+                        <th>Restaurant</th>
+                        <th>Food Type</th>
+                        <th>Quantity</th>
+                        <th>Delivered On</th>
+                        <th>Courier</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>#5001</td>
+                        <td>Restaurant A</td>
+                        <td>Hot Meals</td>
+                        <td>20</td>
+                        <td>2025-01-12</td>
+                        <td>Courier 1</td>
+                    </tr>
+
+                    <tr>
+                        <td>#5002</td>
+                        <td>Restaurant B</td>
+                        <td>Rice Packs</td>
+                        <td>50</td>
+                        <td>2025-01-15</td>
+                        <td>Courier 3</td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <!-- External JS -->
+    <script src="../js/ngo/script-ngo-deliver.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+body { 
+    background: #1aa86d10; 
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.box {
+    background: #fff;
+    padding: 30px;
+    border-radius: 14px;
+    margin: 60px auto;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    border-left: 5px solid #1aa86d;
+    max-width: 600px;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #1aa86d !important;
+}
+.navbar-brand:hover {
+    color: #e0fff2 !important;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #1aa86d !important;
+    border-color: #1aa86d !important;
+}
+.btn-primary:hover {
+    background-color: #138454 !important;
+    border-color: #138454 !important;
+}
+
+/* Input focus effect */
+.form-control:focus {
+    border-color: #1aa86d;
+    box-shadow: 0 0 5px rgba(26,168,109,0.3);
+}

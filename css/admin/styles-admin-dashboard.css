@@ -1,0 +1,119 @@
+/* === General Body === */
+body {
+    background: #f5f5f5;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* === Sidebar === */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    background: #1aa86d;
+    color: #fff;
+    padding-top: 25px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h4 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #fff;
+    padding: 12px 16px;
+    display: block;
+    border-radius: 6px;
+    margin: 0 12px 8px;
+    transition: background 0.2s;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    background: rgba(255, 255, 255, 0.25);
+    color: #fff;
+}
+
+.sidebar a.profile-link {
+    position: absolute;
+    bottom: 25px;
+    width: calc(100% - 30px);
+    text-align: center;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* === Content Area === */
+.content {
+    margin-left: 260px;
+    padding: 25px;
+}
+
+/* === Cards === */
+.card-box {
+    padding: 25px;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.card-box h6 {
+    color: #666;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.card-box h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #1aa86d;
+}
+
+/* === Buttons === */
+.btn-main,
+.btn-primary,
+.btn-secondary,
+.btn-success,
+.btn-info,
+.btn-warning {
+    background-color: #1aa86d !important;
+    border-color: #1aa86d !important;
+    color: #fff !important;
+}
+
+.btn-main:hover,
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn-success:hover,
+.btn-info:hover,
+.btn-warning:hover {
+    background-color: #17985a !important;
+    border-color: #17985a !important;
+    color: #fff !important;
+}
+
+.btn-danger {
+    background-color: #e74c3c !important;
+    border-color: #e74c3c !important;
+    color: #fff !important;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b !important;
+    border-color: #c0392b !important;
+    color: #fff !important;
+}
+
+/* === Badges (Bootstrap 5 compatible) === */
+.badge.bg-success { background-color: #1aa86d !important; }
+.badge.bg-warning { background-color: #f39c12 !important; }
+.badge.bg-danger { background-color: #e74c3c !important; }
+
+/* === Table === */
+table.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #fafafa;
+}

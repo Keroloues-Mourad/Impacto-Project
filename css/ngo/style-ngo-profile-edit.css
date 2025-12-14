@@ -1,0 +1,29 @@
+body {
+    background: #f8f9fa;
+}
+
+.edit-box {
+    background: white;
+    padding: 30px;
+    max-width: 700px;
+    margin: 40px auto;
+    border-radius: 18px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.08);
+}
+
+.profile-img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 5px solid #1aa86d;
+    object-fit: cover;
+}
+
+.btn-main {
+    background: #1aa86d;
+    border: none;
+}
+
+.btn-main:hover {
+    background: #15935e;
+}

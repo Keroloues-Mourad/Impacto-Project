@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Courier Dashboard</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="../css/delivaryCourier/courier-dashboard.css">
+</head>
+
+<body>
+  <div class="sidebar">
+    <h4 class="text-center">Courier Panel</h4>
+    <a href="courier-dashboard.html" class="active">Dashboard</a>
+    <a href="courier-available.html">Available Deliveries</a>
+    <a href="courier-accepted.html">My Deliveries</a>
+    <a href="../Delivary-Courier/courier-delivery-History.html">Delivery History</a>
+    <a href="../Auth/index-auth-login.html">Logout</a>
+    <a href="courier-profile.html" style="margin-top: 500px; display:block;">Profile</a>
+  </div>
+
+  <div class="content">
+    <h2>Dashboard Overview</h2>
+
+    <div class="row g-3 mt-3">
+      <div class="col-md-3">
+        <div class="card-box">
+          <h6>Available</h6>
+          <h3>8</h3>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card-box">
+          <h6>Accepted</h6>
+          <h3>3</h3>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card-box">
+          <h6>Delivered Today</h6>
+          <h3>2</h3>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card-box">
+          <h6>Rating</h6>
+          <h3>4.7</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-box mt-4 text-start">
+      <h5>Current Tasks</h5>
+      <ul>
+        <li>Pickup donation #9001 — Restaurant A</li>
+        <li>Deliver donation #9002 — Hope Foundation</li>
+        <li>Pickup last order #3001 — Hotel Sunrise</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Your JS -->
+  <script src="../js/delivaryCourier/courier-dashboard.js"></script>
+</body>
+</html>
