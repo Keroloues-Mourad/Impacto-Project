@@ -7,6 +7,9 @@ app.use(express.json());
 
 app.use('/api/auth', require('./routes/auth.routes'));
 app.use('/api/protected', require('./routes/protected.routes'));
+app.use('/api', require('./routes/user.routes'));
+app.use('/api', require('./routes/admin.routes'));
+
 
 app.listen(3000, () => {
   console.log('Backend running on http://localhost:3000');

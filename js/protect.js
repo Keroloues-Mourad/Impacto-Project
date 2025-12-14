@@ -7,7 +7,7 @@ function protectPage(requiredRole) {
     return;
   }
 
-  // Verify role with backend
+  // Check role with backend
   fetch(`http://localhost:3000/api/protected/${requiredRole}`, {
     headers: {
       Authorization: 'Bearer ' + token
