@@ -30,18 +30,19 @@ exports.getAvailableDonations = (req, res) => {
       d.quantity,
       d.expiry
     FROM donations d
-    LEFT JOIN restaurants r ON r.id = d.restaurant_id
+    LEFT JOIN users r ON r.id = d.restaurant_id
     WHERE d.status = 'Available'
   `;
 
   db.all(sql, [], (err, rows) => {
     if (err) {
-      console.error(err);
+      console.error('AVAILABLE DONATIONS ERROR:', err);
       return res.status(500).json({ message: err.message });
     }
     res.json(rows);
   });
 };
+
 
 // POST /api/ngo/donations/:id/accept
 exports.acceptDonation = (req, res) => {
