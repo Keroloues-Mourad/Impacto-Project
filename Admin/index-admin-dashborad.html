@@ -33,38 +33,39 @@
     <div class="content">
         <h2 class="mb-4">Dashboard Overview</h2>
 
-        <!-- Stats Cards -->
+        <!-- Stats Cards (CSR) -->
         <div class="row g-3">
             <div class="col-md-3">
                 <div class="card card-box">
                     <h6>Total Donations</h6>
-                    <h3>245</h3>
+                    <h3 id="totalDonations">0</h3>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card card-box">
                     <h6>Last Order Sales</h6>
-                    <h3>120</h3>
+                    <h3 id="lastOrders">0</h3>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card card-box">
                     <h6>Registered NGOs</h6>
-                    <h3>32</h3>
+                    <h3 id="totalNgos">0</h3>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card card-box">
                     <h6>Active Couriers</h6>
-                    <h3>14</h3>
+                    <h3 id="activeCouriers">0</h3>
                 </div>
             </div>
         </div>
 
-        <!-- Recent Donations Table -->
+        <!-- Recent Donations (CSR) -->
         <div class="card mt-4 p-4 shadow-sm">
             <h5 class="mb-3">Recent Donations</h5>
-            <table class="table table-striped align-middle" id="recent-donations">
+
+            <table class="table table-striped align-middle">
                 <thead>
                     <tr>
                         <th>Donation ID</th>
@@ -73,53 +74,29 @@
                         <th>Quantity</th>
                         <th>Status</th>
                         <th>Date</th>
-                        <th>Action</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>#101</td>
-                        <td>Restaurant A</td>
-                        <td>Pizza</td>
-                        <td>10</td>
-                        <td><span class="badge bg-success">Accepted</span></td>
-                        <td>2025-11-01</td>
-                        <td><button class="btn btn-sm btn-main">View</button></td>
-                    </tr>
-                    <tr>
-                        <td>#102</td>
-                        <td>Restaurant B</td>
-                        <td>Pasta</td>
-                        <td>5</td>
-                        <td><span class="badge bg-warning text-dark">Pending</span></td>
-                        <td>2025-11-03</td>
-                        <td><button class="btn btn-sm btn-main">View</button></td>
-                    </tr>
-                    <tr>
-                        <td>#103</td>
-                        <td>Restaurant C</td>
-                        <td>Chicken Meal</td>
-                        <td>12</td>
-                        <td><span class="badge bg-danger">Expired</span></td>
-                        <td>2025-11-04</td>
-                        <td><button class="btn btn-sm btn-main">View</button></td>
-                    </tr>
+
+                <!-- CSR HOOK -->
+                <tbody id="recentDonationsTable">
+                    <!-- Filled dynamically -->
                 </tbody>
             </table>
         </div>
     </div>
 
-    <!-- Bootstrap & External JS -->
+    <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/js/admin/script_admin-dashboard .js"></script>
     <script> protectPage('admin');</script>
+    <script src="../js/admin/admin-dashboard.csr.js"></script>
     <script src="../js/admin/admin-users.csr.js"></script> 
-    
+
+        
+
 </body>
 
 </html>
-
-
 
 
 

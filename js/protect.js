@@ -15,6 +15,7 @@ function protectPage(requiredRole) {
   })
     .then(res => {
       if (!res.ok) {
+      
         throw new Error('Access denied');
       }
     })

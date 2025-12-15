@@ -9,6 +9,7 @@ app.use('/api/auth', require('./routes/auth.routes'));
 app.use('/api/protected', require('./routes/protected.routes'));
 app.use('/api', require('./routes/user.routes'));
 app.use('/api', require('./routes/admin.routes'));
+app.use('/api', require('./routes/adminDashboard.routes'));
 
 
 app.listen(3000, () => {
