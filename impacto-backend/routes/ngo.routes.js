@@ -1,8 +1,10 @@
-const router = require('express').Router();
-const { verifyToken, requireRole } = require('../middleware/auth.middleware');
-const controller = require('../controllers/ngo.controller');
+const express = require('express');
+const router = express.Router();
 
-// Get NGO Dashboard Stats
+const controller = require('../controllers/ngo.controller');
+const { verifyToken, requireRole } = require('../middleware/auth.middleware');
+
+// Dashboard
 router.get(
   '/ngo/dashboard/stats',
   verifyToken,
@@ -10,7 +12,7 @@ router.get(
   controller.getDashboardStats
 );
 
-// Get Available Donations
+// Available donations
 router.get(
   '/ngo/donations/available',
   verifyToken,
@@ -18,12 +20,28 @@ router.get(
   controller.getAvailableDonations
 );
 
-// Accept Donation
+// Accept donation
 router.post(
   '/ngo/donations/:id/accept',
   verifyToken,
   requireRole('ngo'),
   controller.acceptDonation
+);
+
+// ✅ Accepted donations
+router.get(
+  '/ngo/donations/accepted',
+  verifyToken,
+  requireRole('ngo'),
+  controller.getAcceptedDonations
+);
+
+// ✅ Mark delivered
+router.post(
+  '/ngo/donations/:id/deliver',
+  verifyToken,
+  requireRole('ngo'),
+  controller.markAsDelivered
 );
 
 module.exports = router;
