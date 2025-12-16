@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,8 +23,8 @@
         <h4 class="text-center mb-4">NGO Panel</h4>
 
         <a href="./ngo-dashboard.html">Dashboard</a>
-        <a href="./ngo-available-donations.html">Available Donations</a>
-        <a href="./ngo-accept-donation.html" class="active">Accepted Donations</a>
+        <a href="./ngo-available-donations.html" class="active">Available Donations</a>
+        <a href="./ngo-accept-donation.html">Accepted Donations</a>
         <a href="./ngo-delivered.html">Delivered</a>
         <a href="../settings.html">Settings</a>
         <a href="../Auth/index-auth-login.html">Logout</a>
@@ -31,7 +35,6 @@
         <h2 class="mb-4">Available Donations</h2>
 
         <div class="card-box">
-
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -44,33 +47,11 @@
                     </tr>
                 </thead>
 
-                <tbody>
-
-                    <tr>
-                        <td>2001</td>
-                        <td>Restaurant A</td>
-                        <td>Hot Meals</td>
-                        <td>20</td>
-                        <td>2025-01-18</td>
-                        <td>
-                            <a href="ngo-accept-donation.html" class="btn btn-success btn-sm">Accept</a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>2002</td>
-                        <td>Restaurant B</td>
-                        <td>Rice Packs</td>
-                        <td>50</td>
-                        <td>2025-01-19</td>
-                        <td>
-                            <a href="ngo-accept-donation.html" class="btn btn-success btn-sm">Accept</a>
-                        </td>
-                    </tr>
-
+                <!-- CSR Hook -->
+                <tbody id="availableDonationsTable">
+                    <!-- Filled dynamically via JS -->
                 </tbody>
             </table>
-
         </div>
 
     </div>

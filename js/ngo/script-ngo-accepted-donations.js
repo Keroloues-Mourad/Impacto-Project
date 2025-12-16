@@ -1,17 +1,18 @@
-const API = 'http://localhost:3000/api';
+const API_BASE = 'http://localhost:3000/api';
 const token = localStorage.getItem('token');
 
 if (!token) {
   window.location.href = '../Auth/index-auth-login.html';
 }
 
+// Load accepted donations
 function loadAcceptedDonations() {
-  fetch(`${API}/ngo/donations/accepted`, {
+  fetch(`${API_BASE}/ngo/donations/accepted`, {
     headers: { Authorization: 'Bearer ' + token }
   })
     .then(res => res.json())
     .then(data => {
-      const tbody = document.querySelector('tbody');
+      const tbody = document.querySelector('#accepted-donations-table tbody');
       tbody.innerHTML = '';
 
       if (data.length === 0) {
@@ -27,15 +28,14 @@ function loadAcceptedDonations() {
         const tr = document.createElement('tr');
         tr.innerHTML = `
           <td>${d.id}</td>
-          <td>${d.restaurant}</td>
+          <td>${d.restaurant || '-'}</td>
           <td>${d.food_type}</td>
           <td>${d.quantity}</td>
-          <td>${d.expiry}</td>
+          <td>${new Date(d.accepted_at || d.created_at).toLocaleString()}</td>
           <td>
-            <button class="btn btn-sm btn-primary"
-              onclick="markDelivered(${d.id})">
-              Mark Delivered
-            </button>
+            ${d.status === 'Delivered'
+              ? '<span class="badge bg-success">Delivered</span>'
+              : '<span class="badge bg-warning text-dark">Accepted</span>'}
           </td>
         `;
         tbody.appendChild(tr);
@@ -47,15 +47,5 @@ function loadAcceptedDonations() {
     });
 }
 
-function markDelivered(id) {
-  if (!confirm('Mark this donation as delivered?')) return;
-
-  fetch(`${API}/ngo/donations/${id}/deliver`, {
-    method: 'POST',
-    headers: { Authorization: 'Bearer ' + token }
-  })
-    .then(res => res.json())
-    .then(() => loadAcceptedDonations());
-}
-
-loadAcceptedDonations();
+// Initialize
+document.addEventListener('DOMContentLoaded', loadAcceptedDonations);
