@@ -17,7 +17,7 @@ app.use('/api', require('./routes/publicDonations.routes'));
 app.use('/api', require('./routes/publicDonationDetails.routes'));
 app.use('/api', require('./routes/orders.routes'));
 app.use('/api', require('./routes/profile.routes'));
-
+app.use('/api', require('./routes/donorDashboard.routes'));
 
 app.listen(3000, () => {
   console.log('Backend running on http://localhost:3000');
