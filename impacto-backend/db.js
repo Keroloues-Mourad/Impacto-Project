@@ -52,5 +52,34 @@ db.run(`
   )
 `);
 
+/* ================= CUSTOMERS ================= */
+/* customer-specific data, linked to users */
+db.run(`
+CREATE TABLE IF NOT EXISTS customers (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER NOT NULL,
+  phone TEXT,
+  address TEXT,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+  FOREIGN KEY (user_id) REFERENCES users(id)
+)
+`);
+
+/* ================= ORDERS ================= */
+db.run(`
+CREATE TABLE IF NOT EXISTS orders (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  customer_id INTEGER NOT NULL,
+  donation_id INTEGER NOT NULL,
+  quantity INTEGER NOT NULL,
+  status TEXT CHECK(status IN ('Pending','Approved','Delivered')) DEFAULT 'Pending',
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+  FOREIGN KEY (customer_id) REFERENCES users(id),
+  FOREIGN KEY (donation_id) REFERENCES donations(id)
+)
+`);
+
 
 module.exports = db;

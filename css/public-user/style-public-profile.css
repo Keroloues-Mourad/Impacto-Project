@@ -1,16 +1,19 @@
+/* Page background (same as home) */
 body {
-    background: #f6f7fb;
+    background: #f7f7f7;
 }
 
+/* Profile Card */
 .profile-box {
     background: #fff;
     padding: 30px;
     border-radius: 16px;
     max-width: 650px;
     margin: 40px auto;
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
 }
 
+/* Profile Image */
 .profile-img {
     width: 130px;
     height: 130px;
@@ -19,37 +22,33 @@ body {
     border: 5px solid #1aa86d;
 }
 
-/* Custom Navbar */
+/* Navbar */
 .navbar-custom {
     background-color: #1aa86d !important;
 }
-
-.navbar-custom .nav-link {
+.navbar-custom .nav-link,
+.navbar-custom .navbar-brand {
     color: #fff !important;
-    font-weight: 500;
 }
-
 .navbar-custom .nav-link:hover {
     opacity: 0.8;
 }
 
-/* Edit button */
+/* Buttons */
 .btn-main {
-    background-color: #1aa86d !important;
-    border-color: #1aa86d !important;
-    color: #fff !important;
+    background-color: #1aa86d;
+    border-color: #1aa86d;
+    color: #fff;
     border-radius: 10px;
     padding: 12px;
     font-weight: 500;
-    transition: 0.25s ease;
 }
-
 .btn-main:hover {
-    background-color: #179860 !important;
-    border-color: #179860 !important;
-    transform: translateY(-2px);
+    background-color: #16945e;
+    border-color: #16945e;
 }
 
+/* Logout */
 .logout-link {
     color: red;
     font-weight: 500;
@@ -57,7 +56,6 @@ body {
     margin-top: 15px;
     text-decoration: none;
 }
-
 .logout-link:hover {
     opacity: 0.7;
 }

@@ -1,0 +1,73 @@
+/* Page background (same as home) */
+body {
+    background: #f7f7f7;
+}
+
+/* Requests container styled like home cards */
+.requests-box {
+    padding: 15px;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    transition: .2s;
+}
+
+.requests-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+}
+
+/* Navbar (same green as home) */
+.navbar-custom {
+    background-color: #1aa86d !important;
+}
+.navbar-custom .nav-link,
+.navbar-custom .navbar-brand {
+    color: white !important;
+}
+.navbar-custom .nav-link:hover {
+    opacity: 0.8;
+}
+
+/* Table styling */
+table {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+table th {
+    background-color: #f1f1f1;
+    font-weight: 600;
+}
+
+table td, table th {
+    vertical-align: middle;
+    padding: 12px;
+}
+
+/* Buttons (same as home) */
+.btn-main {
+    background-color: #1aa86d;
+    border-color: #1aa86d;
+    color: #fff;
+}
+.btn-main:hover {
+    background-color: #16945e;
+    border-color: #16945e;
+    color: #fff;
+}
+
+/* Status badges */
+.badge-pending {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.badge-approved {
+    background-color: #198754;
+}
+
+.badge-delivered {
+    background-color: #0d6efd;
+}
