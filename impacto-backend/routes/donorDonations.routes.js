@@ -18,6 +18,13 @@ router.post(
   controller.createDonation
 );
 
+/* ================= UPDATE DONATION ================= */
+router.put(
+  '/donor/donations',
+  verifyToken,
+  requireRole('donor'),
+  controller.updateDonation
+);
 
 
 
