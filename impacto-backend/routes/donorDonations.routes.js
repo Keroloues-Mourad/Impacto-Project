@@ -26,6 +26,13 @@ router.put(
   controller.updateDonation
 );
 
+/* ================= DELETE DONATION ================= */
 
+router.delete(
+  '/donor/donations/:id',
+  verifyToken,
+  requireRole('donor'),
+  controller.deleteDonation
+);
 
 module.exports = router;
