@@ -1,70 +1,78 @@
 const db = require('../db');
 
-/**
- * GET /api/me
- */
-exports.getMyProfile = (req, res) => {
+// GET /api/profile
+exports.getProfile = (req, res) => {
   const userId = req.user.id;
 
-  db.get(
-    `
-    SELECT
-      u.id,
-      u.name,
-      u.email,
-      u.role,
-      c.phone,
-      c.address
-    FROM users u
-    LEFT JOIN customers c ON c.user_id = u.id
-    WHERE u.id = ?
-    `,
-    [userId],
-    (err, row) => {
-      if (err) {
-        console.error(err);
-        return res.status(500).json({ message: 'Failed to load profile' });
-      }
-      res.json(row);
+  const sql = `
+    SELECT 
+      id,
+      display_name,
+      full_name,
+      email,
+      phone,
+      location,
+      role,
+      avatar
+    FROM users
+    WHERE id = ?
+  `;
+
+  db.get(sql, [userId], (err, user) => {
+    if (err) {
+      console.error('PROFILE FETCH ERROR:', err.message);
+      return res.status(500).json({ message: 'Server error' });
     }
-  );
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    res.json(user);
+  });
 };
 
-/**
- * PUT /api/me
- */
-exports.updateMyProfile = (req, res) => {
+// PUT /api/profile
+exports.updateProfile = (req, res) => {
   const userId = req.user.id;
-  const { name, email, phone, address } = req.body;
+  const {
+    display_name,
+    full_name,
+    email,
+    phone,
+    location,
+    avatar
+  } = req.body;
 
-  db.serialize(() => {
-    // 1️⃣ Update users table
-    db.run(
-      `UPDATE users SET name = ?, email = ? WHERE id = ?`,
-      [name, email, userId]
-    );
+  const sql = `
+    UPDATE users SET
+      display_name = ?,
+      full_name = ?,
+      email = ?,
+      phone = ?,
+      location = ?,
+      avatar = ?
+    WHERE id = ?
+  `;
 
-    // 2️⃣ Remove old customer row (if exists)
-    db.run(
-      `DELETE FROM customers WHERE user_id = ?`,
-      [userId]
-    );
-
-    // 3️⃣ Insert fresh customer row
-    db.run(
-      `
-      INSERT INTO customers (user_id, phone, address)
-      VALUES (?, ?, ?)
-      `,
-      [userId, phone || null, address || null],
-      (err) => {
-        if (err) {
-          console.error(err);
-          return res.status(500).json({ message: 'Profile update failed' });
-        }
-
-        res.json({ message: 'Profile updated successfully' });
+  db.run(
+    sql,
+    [
+      display_name,
+      full_name,
+      email,
+      phone,
+      location,
+      avatar,
+      userId
+    ],
+    function (err) {
+      if (err) {
+        console.error('PROFILE UPDATE ERROR:', err.message);
+        return res.status(500).json({ message: 'Server error' });
       }
-    );
-  });
+
+      res.json({ message: 'Profile updated successfully' });
+    }
+  );
 };
