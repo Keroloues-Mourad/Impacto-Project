@@ -18,7 +18,7 @@
     <a href="courier-dashboard.html" class="active">Dashboard</a>
     <a href="courier-available.html">Available Deliveries</a>
     <a href="courier-accepted.html">My Deliveries</a>
-    <a href="../Delivary-Courier/courier-delivery-History.html">Delivery History</a>
+    <a href="courier-delivery-History.html">Delivery History</a>
     <a href="../Auth/index-auth-login.html">Logout</a>
     <a href="courier-profile.html" style="margin-top: 500px; display:block;">Profile</a>
   </div>
@@ -26,39 +26,39 @@
   <div class="content">
     <h2>Dashboard Overview</h2>
 
+    <!-- Stats -->
     <div class="row g-3 mt-3">
       <div class="col-md-3">
         <div class="card-box">
           <h6>Available</h6>
-          <h3>8</h3>
+          <h3 id="availableCount">—</h3>
         </div>
       </div>
       <div class="col-md-3">
         <div class="card-box">
           <h6>Accepted</h6>
-          <h3>3</h3>
+          <h3 id="acceptedCount">—</h3>
         </div>
       </div>
       <div class="col-md-3">
         <div class="card-box">
           <h6>Delivered Today</h6>
-          <h3>2</h3>
+          <h3 id="deliveredToday">—</h3>
         </div>
       </div>
       <div class="col-md-3">
         <div class="card-box">
           <h6>Rating</h6>
-          <h3>4.7</h3>
+          <h3 id="rating">—</h3>
         </div>
       </div>
     </div>
 
+    <!-- Current Tasks -->
     <div class="card-box mt-4 text-start">
-      <h5>Current Tasks</h5>
-      <ul>
-        <li>Pickup donation #9001 — Restaurant A</li>
-        <li>Deliver donation #9002 — Hope Foundation</li>
-        <li>Pickup last order #3001 — Hotel Sunrise</li>
+      <h5>Current Deliveries</h5>
+      <ul id="tasksList">
+        <li>Loading...</li>
       </ul>
     </div>
   </div>
@@ -66,8 +66,13 @@
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Your JS -->
-  <script src="../js/delivaryCourier/courier-dashboard.js"></script>
-   <script> protectPage('courier');</script>
+  <!-- CSR -->
+ <script src="../js/delivaryCourier/courier-dashboard.js"></script>
+  <script src="../js/delivaryCourier/courier-dashboard.csr.js"></script>
+
+  <!-- Protection -->
+  <script>
+    protectPage('courier');
+  </script>
 </body>
 </html>

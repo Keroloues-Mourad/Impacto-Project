@@ -19,7 +19,7 @@ app.use('/api', require('./routes/orders.routes'));
 app.use('/api', require('./routes/profile.routes'));
 app.use('/api', require('./routes/donorDashboard.routes'));
 app.use('/api', require('./routes/donorDonations.routes'));
-
+app.use('/api', require('./routes/courier.routes'));
 
 
 
