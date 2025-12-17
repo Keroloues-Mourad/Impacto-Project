@@ -56,26 +56,45 @@ exports.getMyDonations = (req, res) => {
 
 /* ================= UPDATE DONATION ================= */
 exports.updateDonation = (req, res) => {
-  const donorId = req.user.id;
   const { donationId, food_type, quantity, expiry } = req.body;
-
-  if (!donationId || !food_type || !quantity || !expiry) {
-    return res.status(400).json({ message: 'All required fields must be filled' });
-  }
 
   const sql = `
     UPDATE donations
     SET food_type = ?, quantity = ?, expiry = ?
-    WHERE id = ? AND restaurant_id = ?
+    WHERE id = ?
   `;
 
-  db.run(sql, [food_type, quantity, expiry, donationId, donorId], function(err) {
-    if (err) return res.status(500).json({ message: err.message });
+  db.run(sql, [food_type, quantity, expiry, donationId], function (err) {
+    if (err) {
+      return res.status(500).json({ message: err.message });
+    }
 
     if (this.changes === 0) {
-      return res.status(404).json({ message: 'Donation not found or not editable' });
+      return res.status(404).json({ message: 'Donation not updated' });
     }
 
     res.json({ message: 'Donation updated successfully' });
   });
 };
+
+
+/* ================= DELETE DONATION ================= */
+
+exports.deleteDonation = (req, res) => {
+  const donationId = req.params.id;
+
+  const sql = `DELETE FROM donations WHERE id = ?`;
+
+  db.run(sql, [donationId], function (err) {
+    if (err) {
+      return res.status(500).json({ message: err.message });
+    }
+
+    if (this.changes === 0) {
+      return res.status(404).json({ message: 'Donation not found' });
+    }
+
+    res.json({ message: 'Donation deleted successfully' });
+  });
+};
+
