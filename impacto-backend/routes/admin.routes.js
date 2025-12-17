@@ -1,8 +1,38 @@
-const router = require('express').Router();
-const { verifyToken, requireRole } = require('../middleware/auth.middleware');
-const controller = require('../controllers/admin.controller');
+const express = require('express');
+const router = express.Router();
 
-router.get('/admin/users', verifyToken, requireRole('admin'), controller.getAllUsers);
-router.delete('/admin/users/:id', verifyToken, requireRole('admin'), controller.deleteUser);
+const { verifyToken } = require('../middleware/auth.middleware');
+const adminController = require('../controllers/admin.controller');
+
+
+function adminOnly(req, res, next) {
+  if (req.user.role !== 'admin') {
+    return res.status(403).json({ message: 'Access denied' });
+  }
+  next();
+}
+
+/* ================= DASHBOARD ================= */
+router.get(
+  '/admin/dashboard',
+  verifyToken,
+  adminOnly,
+  adminController.getDashboard
+);
+
+/* ================= DONATIONS ================= */
+router.get(
+  '/admin/donations',
+  verifyToken,
+  adminOnly,
+  adminController.getDonations
+);
+
+router.post(
+  '/admin/donations/approve/:orderId',
+  verifyToken,
+  adminOnly,
+  adminController.approveDonation
+);
 
 module.exports = router;

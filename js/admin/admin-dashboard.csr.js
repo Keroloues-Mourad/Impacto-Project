@@ -1,87 +1,42 @@
-const API_BASE = 'http://localhost:3000/api';
+const API = 'http://localhost:3000/api';
 const token = localStorage.getItem('token');
 
-if (!token) {
-  redirectToLogin();
-}
-
-
-function loadStats() {
-  fetch(`${API_BASE}/admin/stats`, {
-    headers: {
-      Authorization: 'Bearer ' + token
-    }
-  })
-    .then(handleResponse)
-    .then(stats => {
-      document.getElementById('totalDonations').innerText = stats.totalDonations;
-      document.getElementById('lastOrders').innerText = stats.lastOrders;
-      document.getElementById('totalNgos').innerText = stats.totalNgos;
-      document.getElementById('activeCouriers').innerText = stats.activeCouriers;
-    })
-    .catch(handleAuthError);
-}
-
-
-function loadRecentDonations() {
-  fetch(`${API_BASE}/admin/recent-donations`, {
-    headers: {
-      Authorization: 'Bearer ' + token
-    }
-  })
-    .then(handleResponse)
-    .then(renderRecentDonations)
-    .catch(handleAuthError);
-}
-
-
-function renderRecentDonations(donations) {
-  const table = document.getElementById('recentDonationsTable');
-  table.innerHTML = '';
-
-  if (donations.length === 0) {
-    table.innerHTML = `
-      <tr>
-        <td colspan="6" class="text-center">No donations found</td>
-      </tr>
-    `;
-    return;
+fetch(`${API}/admin/dashboard`, {
+  headers: {
+    Authorization: 'Bearer ' + token
   }
+})
+  .then(res => {
+    if (!res.ok) throw new Error('Unauthorized');
+    return res.json();
+  })
+  .then(data => {
+    document.getElementById('totalDonations').innerText = data.totalDonations;
+    document.getElementById('lastOrders').innerText = data.lastOrders;
+    document.getElementById('totalNgos').innerText = data.totalNgos;
+    document.getElementById('activeCouriers').innerText = data.activeCouriers;
 
-  donations.forEach(donation => {
-    const row = document.createElement('tr');
+    const table = document.getElementById('recentDonationsTable');
+    table.innerHTML = '';
 
-    row.innerHTML = `
-      <td>#${donation.id}</td>
-      <td>${donation.restaurant_name}</td>
-      <td>${donation.food_type}</td>
-      <td>${donation.quantity}</td>
-      <td>${donation.status}</td>
-      <td>${new Date(donation.created_at).toLocaleDateString()}</td>
-    `;
+    if (!data.recentDonations.length) {
+      table.innerHTML = `<tr><td colspan="6">No donations yet</td></tr>`;
+      return;
+    }
 
-    table.appendChild(row);
+    data.recentDonations.forEach(d => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>#${d.id}</td>
+        <td>${d.restaurant}</td>
+        <td>${d.food_type}</td>
+        <td>${d.quantity}</td>
+        <td>${d.status}</td>
+        <td>${new Date(d.created_at).toLocaleDateString()}</td>
+      `;
+      table.appendChild(tr);
+    });
+  })
+  .catch(() => {
+    alert('Failed to load admin dashboard');
   });
-}
-
-
-function handleResponse(res) {
-  if (!res.ok) throw new Error('Unauthorized');
-  return res.json();
-}
-
-function handleAuthError() {
-  alert('Session expired or unauthorized');
-  localStorage.removeItem('token');
-  redirectToLogin();
-}
-
-function redirectToLogin() {
-  window.location.href = '../Auth/index-auth-login.html';
-}
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  loadStats();
-  loadRecentDonations();
-});
