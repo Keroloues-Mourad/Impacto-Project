@@ -107,3 +107,121 @@ exports.approveDonation = (req, res) => {
     }
   );
 };
+exports.getUsers = (req, res) => {
+  db.all(
+    `
+    SELECT id, name, email, role
+    FROM users
+    ORDER BY created_at DESC
+    `,
+    (err, rows) => {
+      if (err) {
+        console.error('GET USERS ERROR:', err.message);
+        return res.status(500).json([]);
+      }
+      res.json(rows || []);
+    }
+  );
+};
+
+exports.deleteUser = (req, res) => {
+  const userId = req.params.id;
+
+  db.run(
+    `DELETE FROM users WHERE id = ?`,
+    [userId],
+    function (err) {
+      if (err) {
+        console.error('DELETE USER ERROR:', err.message);
+        return res.status(500).json({ message: 'Failed to delete user' });
+      }
+
+      res.json({ message: 'User deleted' });
+    }
+  );
+};
+exports.getNgos = (req, res) => {
+  db.all(
+    `
+    SELECT
+      u.id,
+      u.name,
+      u.email,
+      IFNULL(c.count, 0) AS accepted
+    FROM users u
+    LEFT JOIN (
+      SELECT ngo_id, COUNT(*) AS count
+      FROM donations
+      WHERE status = 'Accepted'
+      GROUP BY ngo_id
+    ) c ON u.id = c.ngo_id
+    WHERE u.role = 'ngo'
+    ORDER BY u.created_at DESC
+    `,
+    (err, rows) => {
+      if (err) {
+        console.error('GET NGOS ERROR:', err.message);
+        return res.status(500).json([]);
+      }
+      res.json(rows || []);
+    }
+  );
+};
+
+exports.deleteNgo = (req, res) => {
+  const id = req.params.id;
+
+  db.run(
+    `DELETE FROM users WHERE id = ? AND role = 'ngo'`,
+    [id],
+    function (err) {
+      if (err) {
+        console.error('DELETE NGO ERROR:', err.message);
+        return res.status(500).json({ message: 'Failed to delete NGO' });
+      }
+      res.json({ message: 'NGO deleted' });
+    }
+  );
+};
+exports.getRestaurants = (req, res) => {
+  db.all(
+    `
+    SELECT
+      u.id,
+      u.name,
+      u.email,
+      IFNULL(d.count, 0) AS donations
+    FROM users u
+    LEFT JOIN (
+      SELECT restaurant_id, COUNT(*) AS count
+      FROM donations
+      GROUP BY restaurant_id
+    ) d ON u.id = d.restaurant_id
+    WHERE u.role = 'donor'
+    ORDER BY u.created_at DESC
+    `,
+    (err, rows) => {
+      if (err) {
+        console.error('GET RESTAURANTS ERROR:', err.message);
+        return res.status(500).json([]);
+      }
+      res.json(rows || []);
+    }
+  );
+};
+
+exports.deleteRestaurant = (req, res) => {
+  const id = req.params.id;
+
+  db.run(
+    `DELETE FROM users WHERE id = ? AND role = 'donor'`,
+    [id],
+    function (err) {
+      if (err) {
+        console.error('DELETE RESTAURANT ERROR:', err.message);
+        return res.status(500).json({ message: 'Failed to delete restaurant' });
+      }
+      res.json({ message: 'Restaurant deleted' });
+    }
+  );
+};

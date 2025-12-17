@@ -1,106 +1,59 @@
-const API_BASE = 'http://localhost:3000/api';
+const API = 'http://localhost:3000/api';
 const token = localStorage.getItem('token');
+const table = document.getElementById('usersTable');
 
-// Extra guard (protect.js already does this, but safe)
-if (!token) {
-  redirectToLogin();
-}
-
-/**
- * Load all users (ADMIN ONLY)
- */
-function loadUsers() {
-  fetch(`${API_BASE}/admin/users`, {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
+fetch(`${API}/admin/users`, {
+  headers: { Authorization: 'Bearer ' + token }
+})
+  .then(res => {
+    if (!res.ok) throw new Error();
+    return res.json();
   })
-    .then(handleAuthResponse)
-    .then(users => renderUsers(users))
-    .catch(handleNonAuthError);
-}
+  .then(renderUsers)
+  .catch(() => {
+    table.innerHTML = `<tr><td colspan="5">Failed to load users</td></tr>`;
+  });
 
-/**
- * Render users into the table
- */
 function renderUsers(users) {
-  const table = document.getElementById('usersTable');
   table.innerHTML = '';
 
-  if (!users || users.length === 0) {
-    table.innerHTML = `
-      <tr>
-        <td colspan="5" class="text-center">No users found</td>
-      </tr>
-    `;
+  if (!users.length) {
+    table.innerHTML = `<tr><td colspan="5">No users found</td></tr>`;
     return;
   }
 
   users.forEach(user => {
-    const row = document.createElement('tr');
+    const tr = document.createElement('tr');
 
-    row.innerHTML = `
+    tr.innerHTML = `
       <td>${user.id}</td>
-      <td>${user.name}</td>
+      <td>${user.name || '-'}</td>
       <td>${user.email}</td>
-      <td>${user.role}</td>
       <td>
-        <button class="btn btn-sm btn-danger"
-                onclick="deleteUser(${user.id})">
+        <span class="badge bg-secondary">${user.role}</span>
+      </td>
+      <td>
+        <button class="btn btn-sm btn-danger" onclick="deleteUser(${user.id})">
           Delete
         </button>
       </td>
     `;
 
-    table.appendChild(row);
+    table.appendChild(tr);
   });
 }
 
+function deleteUser(id) {
+  if (!confirm('Delete this user?')) return;
 
-function deleteUser(userId) {
-  if (!confirm('Are you sure you want to delete this user?')) return;
-
-  fetch(`${API_BASE}/admin/users/${userId}`, {
+  fetch(`${API}/admin/users/${id}`, {
     method: 'DELETE',
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
+    headers: { Authorization: 'Bearer ' + token }
   })
-    .then(handleAuthResponse)
-    .then(() => loadUsers())
-    .catch(handleNonAuthError);
+    .then(res => res.json())
+    .then(() => {
+      alert('User deleted');
+      location.reload();
+    })
+    .catch(() => alert('Failed to delete user'));
 }
-
-
-function handleAuthResponse(res) {
-
-  if (res.status === 401 || res.status === 403) {
-    localStorage.removeItem('token');
-    redirectToLogin();
-    throw new Error('Unauthorized');
-  }
-
-
-  if (!res.ok) {
-    throw new Error('Server error');
-  }
-
-  return res.json();
-}
-
-
-/*
- function handleNonAuthError(error) {
-   console.error(error);
-   alert('Something went wrong. Please try again.');
-}*/
-
-/**
- * Redirect helper
- */
-function redirectToLogin() {
-  window.location.href = '../Auth/index-auth-login.html';
-}
-
-// Initial load
-document.addEventListener('DOMContentLoaded', loadUsers);

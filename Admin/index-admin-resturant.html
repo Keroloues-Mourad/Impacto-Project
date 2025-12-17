@@ -6,10 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Manage Restaurants</title>
 
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- External CSS -->
     <link rel="stylesheet" href="../css/admin/styles-manage-restaurants.css">
 </head>
 
@@ -19,35 +16,24 @@
     <div class="sidebar">
         <h4 class="text-center mb-4">Admin Panel</h4>
         <a href="./index-admin-dashborad.html">Dashboard</a>
-        <a href="./index-admin-resturant.html">Manage Restaurants</a>
-        <a href="./index-admin-ngos.html" class="active">Manage NGOs</a>
+        <a href="./index-admin-resturant.html" class="active">Manage Restaurants</a>
+        <a href="./index-admin-ngos.html">Manage NGOs</a>
         <a href="./index-admin-user.html">Manage Users</a>
         <a href="./index-admin-donations.html">Donations</a>
-        <a href="./index-admin-lastorder.html">Last Order</a>
-        <a href="#">Reports</a>
+        <!-- <a href="#" class="active">Last Order</a> --> 
+        <!-- <a href="#">Reports</a> -->
+        <!-- <a href="../settings.html">Settings</a> -->
     </div>
 
     <!-- Content -->
     <div class="content">
         <h2 class="mb-4">Manage Restaurants</h2>
 
-        <!-- Search & Add Button -->
-        <div class="card card-box mb-4 shadow-sm">
-            <div class="row">
-                <div class="col-md-8">
-                    <input type="text" id="search-restaurants" class="form-control"
-                        placeholder="Search restaurant name...">
-                </div>
-                <div class="col-md-4 text-end">
-                    <button class="btn btn-main">Add New Restaurant</button>
-                </div>
-            </div>
-        </div>
-
         <!-- Restaurants Table -->
         <div class="card card-box shadow-sm">
             <h5 class="mb-3">Restaurant List</h5>
-            <table class="table table-striped" id="restaurants-table">
+
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -58,38 +44,26 @@
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Restaurant A</td>
-                        <td>a@gmail.com</td>
-                        <td><span class="badge bg-success">Active</span></td>
-                        <td>34</td>
-                        <td>
-                            <button class="btn btn-sm btn-main text-white">View</button>
-                            <button class="btn btn-sm btn-main">Edit</button>
-                            <button class="btn btn-sm btn-danger">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Restaurant B</td>
-                        <td>b@gmail.com</td>
-                        <td><span class="badge bg-secondary">Suspended</span></td>
-                        <td>12</td>
-                        <td>
-                            <button class="btn btn-sm btn-main text-white">View</button>
-                            <button class="btn btn-sm btn-main">Edit</button>
-                            <button class="btn btn-sm btn-danger">Delete</button>
-                        </td>
-                    </tr>
+
+                <!-- CSR -->
+                <tbody id="restaurantsTable">
+                    <tr><td colspan="6">Loading...</td></tr>
                 </tbody>
             </table>
         </div>
     </div>
 
-    <!-- External JavaScript -->
-    <script src="../js/admin/script-manage-restaurants.js"></script>
-</body>
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Protection -->
+    <script src="../js/protect.js"></script>
+    <script>
+        protectPage('admin');
+    </script>
+
+    <!-- CSR -->
+    <script src="../js/admin/admin-restaurants.csr.js"></script>
+
+</body>
 </html>
