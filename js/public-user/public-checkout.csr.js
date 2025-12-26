@@ -1,4 +1,3 @@
-
 const API_BASE = 'http://localhost:3000/api';
 const token = localStorage.getItem('token');
 
@@ -9,7 +8,6 @@ if (!token || !donationId) {
   window.location.href = './index-public-home.html';
 }
 
-// Load donation summary
 fetch(`${API_BASE}/public/donations/${donationId}`, {
   headers: { Authorization: 'Bearer ' + token }
 })
@@ -20,7 +18,6 @@ fetch(`${API_BASE}/public/donations/${donationId}`, {
     document.getElementById('restaurantName').innerText = donation.restaurant_name;
   });
 
-// Confirm order
 document.getElementById('confirmBtn').addEventListener('click', () => {
   const quantity = document.getElementById('requestQty').value;
   const phone = document.getElementById('phone').value;
@@ -41,7 +38,7 @@ document.getElementById('confirmBtn').addEventListener('click', () => {
   })
     .then(res => res.json())
     .then(data => {
-       window.location.href = `./index-public-success.html?orderId=${data.orderId}`;
+      window.location.href = `./index-public-success.html?orderId=${data.orderId}`;
     })
     .catch(() => alert('Order failed'));
 });

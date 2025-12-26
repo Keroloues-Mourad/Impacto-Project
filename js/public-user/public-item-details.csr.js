@@ -27,7 +27,6 @@ function loadDonationDetails() {
 }
 
 function renderDetails(donation) {
-  // عناصر الصفحة
   const imgEl = document.getElementById('donationImage');
   const foodTypeEl = document.getElementById('foodType');
   const restaurantEl = document.getElementById('restaurantName');
@@ -35,11 +34,8 @@ function renderDetails(donation) {
   const expiryEl = document.getElementById('expiry');
   const descEl = document.getElementById('description');
 
-  // الصورة (نفس الدومين 127.0.0.1)
   imgEl.src = `http://127.0.0.1:3000/uploads/${donation.image}`;
-  
 
-  // البيانات
   foodTypeEl.textContent = donation.food_type;
   restaurantEl.textContent = donation.restaurant_name;
   quantityEl.textContent = donation.quantity;
@@ -48,6 +44,10 @@ function renderDetails(donation) {
   descEl.textContent = donation.notes
     ? donation.notes
     : 'No additional description provided.';
+
+  // Update the "Request This Donation" button to include the donation ID
+  const requestBtn = document.getElementById('requestBtn');
+  requestBtn.href = `./index-public-checkout.html?id=${donation.id}`;
 }
 
 document.addEventListener('DOMContentLoaded', loadDonationDetails);
