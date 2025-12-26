@@ -1,8 +1,14 @@
 const sqlite3 = require('sqlite3').verbose();
 
-const db = new sqlite3.Database('./impacto.db');
+const db = new sqlite3.Database('./impacto.db', (err) => {
+  if (err) {
+    console.error('Failed to connect to database', err);
+  } else {
+    console.log('Connected to SQLite database');
+  }
+});
 
-// USERS (already used)
+/* ================= USERS ================= */
 db.run(`
 CREATE TABLE IF NOT EXISTS users (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -25,7 +31,7 @@ CREATE TABLE IF NOT EXISTS ngos (
 )
 `);
 
-// COURIERS
+/* ================= COURIERS ================= */
 db.run(`
 CREATE TABLE IF NOT EXISTS couriers (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -37,23 +43,29 @@ CREATE TABLE IF NOT EXISTS couriers (
 
 /* ================= DONATIONS ================= */
 db.run(`
-  CREATE TABLE IF NOT EXISTS donations (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    restaurant_id INTEGER NOT NULL,
-    ngo_id INTEGER,
-    food_type TEXT NOT NULL,
-    quantity INTEGER NOT NULL,
-    expiry TEXT NOT NULL,
-    status TEXT CHECK(status IN ('Available','Accepted','Delivered')) NOT NULL DEFAULT 'Available',
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+CREATE TABLE IF NOT EXISTS donations (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  restaurant_id INTEGER NOT NULL,
+  ngo_id INTEGER,
+  food_type TEXT NOT NULL,
+  quantity INTEGER NOT NULL,
+  expiry TEXT NOT NULL,
 
-    FOREIGN KEY (restaurant_id) REFERENCES users(id),
-    FOREIGN KEY (ngo_id) REFERENCES users(id)
-  )
+  -- ✅ NEW FEATURES
+  image TEXT,
+  notes TEXT,
+
+  status TEXT CHECK(status IN ('Available','Accepted','Delivered'))
+    NOT NULL DEFAULT 'Available',
+
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+  FOREIGN KEY (restaurant_id) REFERENCES users(id),
+  FOREIGN KEY (ngo_id) REFERENCES users(id)
+)
 `);
 
 /* ================= CUSTOMERS ================= */
-/* customer-specific data, linked to users */
 db.run(`
 CREATE TABLE IF NOT EXISTS customers (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -73,13 +85,13 @@ CREATE TABLE IF NOT EXISTS orders (
   customer_id INTEGER NOT NULL,
   donation_id INTEGER NOT NULL,
   quantity INTEGER NOT NULL,
-  status TEXT CHECK(status IN ('Pending','Approved','Delivered')) DEFAULT 'Pending',
+  status TEXT CHECK(status IN ('Pending','Approved','Delivered'))
+    DEFAULT 'Pending',
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 
   FOREIGN KEY (customer_id) REFERENCES users(id),
   FOREIGN KEY (donation_id) REFERENCES donations(id)
 )
 `);
-
 
 module.exports = db;

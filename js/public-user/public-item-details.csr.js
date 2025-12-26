@@ -1,41 +1,53 @@
-const API_BASE = 'http://localhost:3000/api';
+const API_BASE = 'http://127.0.0.1:3000/api';
 const token = localStorage.getItem('token');
 
-// Get donation ID from URL
-const params = new URLSearchParams(window.location.search);
-const donationId = params.get('id');
-
-if (!token || !donationId) {
-  window.location.href = './index-public-home.html';
+if (!token) {
+  window.location.href = '../Auth/index-auth-login.html';
 }
 
-/**
- * Load donation details
- */
-fetch(`${API_BASE}/public/donations/${donationId}`, {
-  headers: {
-    Authorization: 'Bearer ' + token
-  }
-})
-  .then(res => {
-    if (!res.ok) throw new Error('Not found');
-    return res.json();
-  })
-  .then(donation => {
-    document.getElementById('foodType').innerText = donation.food_type;
-    document.getElementById('restaurantName').innerText = donation.restaurant_name;
-    document.getElementById('quantity').innerText = donation.quantity;
-    document.getElementById('expiry').innerText = donation.expiry;
+function getDonationId() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('id');
+}
 
-    // Optional description (derived)
-    document.getElementById('description').innerText =
-      `Fresh ${donation.food_type} donated by ${donation.restaurant_name}.`;
+function loadDonationDetails() {
+  const donationId = getDonationId();
+  if (!donationId) return;
 
-    // Pass donation id to checkout
-    document.getElementById('requestBtn').href =
-      `./index-public-checkout.html?id=${donation.id}`;
+  fetch(`${API_BASE}/public/donations/${donationId}`, {
+    headers: {
+      Authorization: 'Bearer ' + token
+    }
   })
-  .catch(() => {
-    alert('Donation not found');
-    window.location.href = './index-public-home.html';
-  });
+    .then(res => res.json())
+    .then(renderDetails)
+    .catch(() => {
+      alert('Failed to load donation details');
+    });
+}
+
+function renderDetails(donation) {
+  // عناصر الصفحة
+  const imgEl = document.getElementById('donationImage');
+  const foodTypeEl = document.getElementById('foodType');
+  const restaurantEl = document.getElementById('restaurantName');
+  const quantityEl = document.getElementById('quantity');
+  const expiryEl = document.getElementById('expiry');
+  const descEl = document.getElementById('description');
+
+  // الصورة (نفس الدومين 127.0.0.1)
+  imgEl.src = `http://127.0.0.1:3000/uploads/${donation.image}`;
+  
+
+  // البيانات
+  foodTypeEl.textContent = donation.food_type;
+  restaurantEl.textContent = donation.restaurant_name;
+  quantityEl.textContent = donation.quantity;
+  expiryEl.textContent = donation.expiry;
+
+  descEl.textContent = donation.notes
+    ? donation.notes
+    : 'No additional description provided.';
+}
+
+document.addEventListener('DOMContentLoaded', loadDonationDetails);

@@ -1,8 +1,5 @@
-
-
 const API_BASE = 'http://localhost:3000/api';
 const token = localStorage.getItem('token');
-
 
 if (!token) {
   window.location.href = '../Auth/index-auth-login.html';
@@ -39,13 +36,18 @@ function renderDonations(donations) {
   }
 
   donations.forEach(donation => {
+
+    console.log('IMAGE FROM API:', donation.image);
+
     const col = document.createElement('div');
     col.className = 'col-md-4';
 
     col.innerHTML = `
       <div class="card-box">
         <img 
-          src="https://via.placeholder.com/350x200"
+          src="${donation.image 
+            ? `http://127.0.0.1:3000/uploads/${donation.image}` 
+            : 'https://via.placeholder.com/350x200'}"
           class="food-img"
           alt="Food Donation"
         />
@@ -65,9 +67,10 @@ function renderDonations(donations) {
         </a>
       </div>
     `;
+
     container.appendChild(col);
   });
-}
+} // ✅ ← THIS WAS MISSING
 
 /**
  * Helpers

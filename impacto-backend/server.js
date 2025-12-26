@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
 app.use(cors());
@@ -23,7 +24,9 @@ app.use('/api', require('./routes/courier.routes'));
 app.use('/uploads', express.static('uploads'));
 
 app.use('/api', require('./routes/profile.routes'));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+app.use('/uploads', require('express').static('uploads'));
 
 
 app.listen(3000, () => {

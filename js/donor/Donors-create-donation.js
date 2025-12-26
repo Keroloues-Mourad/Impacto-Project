@@ -7,37 +7,55 @@ if (!token) {
 
 const form = document.getElementById('donationForm');
 
-form.addEventListener('submit', e => {
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
+  const donorType = document.getElementById('donorType').value;
   const foodType = document.getElementById('foodType').value;
   const quantity = document.getElementById('quantity').value;
   const expiry = document.getElementById('expiry').value;
+  const notes = document.getElementById('notes').value;
+  const imageFile = document.getElementById('foodImg').files[0];
 
-  if (!foodType || !quantity || !expiry) {
-    alert('Please fill all required fields');
+  // ✅ FIXED validation (this caused your alert before)
+  if (!donorType || !foodType || !quantity || !expiry) {
+    alert('All required fields must be filled.');
     return;
   }
 
-  fetch(`${API_BASE}/donor/donations`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + token
-    },
-    body: JSON.stringify({
-      foodType,
-      quantity,
-      expiry
-    })
-  })
-    .then(res => res.json())
-    .then(data => {
-      alert(data.message);
-      window.location.href = './Donors-dashboard.html';
-    })
-    .catch(err => {
-      console.error(err);
-      alert('Failed to create donation');
+  const formData = new FormData();
+  formData.append('donorType', donorType);
+  formData.append('foodType', foodType);
+  formData.append('quantity', quantity);
+  formData.append('expiry', expiry);
+  formData.append('notes', notes || '');
+
+  if (imageFile) {
+    formData.append('foodImage', imageFile);
+  }
+
+  try {
+    const response = await fetch(`${API_BASE}/donor/donations`, {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer ' + token
+        // ❌ DO NOT set Content-Type
+      },
+      body: formData
     });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      alert(data.message || 'Failed to create donation');
+      return;
+    }
+
+    alert('Donation created successfully!');
+    window.location.href = './Donors-dashboard.html';
+
+  } catch (error) {
+    console.error(error);
+    alert('Server error');
+  }
 });

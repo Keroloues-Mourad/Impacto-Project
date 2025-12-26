@@ -10,11 +10,14 @@ body {
 }
 
 .food-img {
-    width: 100%;
-    border-radius: 12px;
-    height: 300px;
-    object-fit: cover;
+  width: 100%;
+  max-width: 400px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 16px;
+  background: #f2f2f2;
 }
+
 
 /* Navbar Color */
 .bg-primary {
@@ -41,3 +44,4 @@ body {
     border-color: #179860 !important;
     transform: translateY(-2px);
 }
+

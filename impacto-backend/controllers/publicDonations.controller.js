@@ -1,7 +1,6 @@
 const db = require('../db');
 
-// GET /api/public/donations
-exports.getAvailableDonations = (req, res) => {
+function getAvailableDonations(req, res) {
   db.all(
     `
     SELECT
@@ -9,10 +8,12 @@ exports.getAvailableDonations = (req, res) => {
       d.food_type,
       d.quantity,
       d.expiry,
+      d.image,
+      d.notes,
       d.created_at,
       u.name AS restaurant_name
     FROM donations d
-    JOIN users u ON d.restaurant_id = u.id
+    JOIN users u ON u.id = d.restaurant_id
     WHERE d.status = 'Available'
     ORDER BY d.created_at DESC
     `,
@@ -24,4 +25,8 @@ exports.getAvailableDonations = (req, res) => {
       res.json(rows);
     }
   );
+}
+
+module.exports = {
+  getAvailableDonations
 };

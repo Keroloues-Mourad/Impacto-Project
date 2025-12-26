@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const { verifyToken, requireRole } = require('../middleware/auth.middleware');
+const upload = require('../middleware/upload.middleware');
 const controller = require('../controllers/donorDonations.controller');
 
-/* ================= GET MY DONATIONS ================= */
+/* GET MY DONATIONS */
 router.get(
   '/donor/donations',
   verifyToken,
@@ -10,15 +11,16 @@ router.get(
   controller.getMyDonations
 );
 
-/* ================= CREATE DONATION ================= */
+/* CREATE DONATION */
 router.post(
   '/donor/donations',
   verifyToken,
   requireRole('donor'),
+  upload.single('foodImage'),
   controller.createDonation
 );
 
-/* ================= UPDATE DONATION ================= */
+/* UPDATE DONATION */
 router.put(
   '/donor/donations',
   verifyToken,
@@ -26,8 +28,7 @@ router.put(
   controller.updateDonation
 );
 
-/* ================= DELETE DONATION ================= */
-
+/* DELETE DONATION */
 router.delete(
   '/donor/donations/:id',
   verifyToken,

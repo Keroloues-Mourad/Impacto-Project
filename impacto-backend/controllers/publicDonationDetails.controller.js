@@ -1,28 +1,29 @@
 const db = require('../db');
 
-// GET /api/public/donations/:id
 exports.getDonationById = (req, res) => {
-  const id = req.params.id;
+  const donationId = req.params.id;
 
-  db.get(
-    `
+  const sql = `
     SELECT
       d.id,
       d.food_type,
       d.quantity,
       d.expiry,
-      d.created_at,
+      d.image,
+      d.notes,
       u.name AS restaurant_name
     FROM donations d
-    JOIN users u ON d.restaurant_id = u.id
-    WHERE d.id = ? AND d.status = 'Available'
-    `,
-    [id],
-    (err, row) => {
-      if (!row) {
-        return res.status(404).json({ message: 'Donation not found' });
-      }
-      res.json(row);
+    JOIN users u ON u.id = d.restaurant_id
+    WHERE d.id = ?
+  `;
+
+  db.get(sql, [donationId], (err, row) => {
+    if (err) {
+      return res.status(500).json({ message: 'Database error' });
     }
-  );
+    if (!row) {
+      return res.status(404).json({ message: 'Donation not found' });
+    }
+    res.json(row);
+  });
 };

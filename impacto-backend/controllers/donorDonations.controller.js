@@ -2,28 +2,42 @@ const db = require('../db');
 
 /* ================= CREATE DONATION ================= */
 exports.createDonation = (req, res) => {
-  const donorId = req.user.id;
-  const { foodType, quantity, expiry } = req.body;
+  try {
+    const { foodType, quantity, expiry } = req.body;
+    const donorId = req.user.id;
 
-  if (!foodType || !quantity || !expiry) {
-    return res.status(400).json({ message: 'All required fields must be filled' });
-  }
+    const image = req.file ? req.file.filename : null;
 
-  const sql = `
-    INSERT INTO donations (restaurant_id, food_type, quantity, expiry)
-    VALUES (?, ?, ?, ?)
-  `;
+    const sql = `
+      INSERT INTO donations
+      (restaurant_id, food_type, quantity, expiry, image, status, created_at)
+      VALUES (?, ?, ?, ?, ?, 'Available', datetime('now'))
+    `;
 
-  db.run(sql, [donorId, foodType, quantity, expiry], function (err) {
-    if (err) {
-      return res.status(500).json({ message: err.message });
-    }
+    const params = [
+      donorId,
+      foodType,
+      quantity,
+      expiry,
+      image,
+    ];
 
-    res.status(201).json({
-      message: 'Donation created successfully',
-      donationId: this.lastID
+    db.run(sql, params, function (err) {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ message: err.message });
+      }
+
+      res.status(201).json({
+        message: 'Donation created successfully',
+        donationId: this.lastID
+      });
     });
-  });
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
 };
 
 
@@ -37,6 +51,7 @@ exports.getMyDonations = (req, res) => {
       d.id,
       d.food_type,
       d.quantity,
+      d.image,
       d.status,
       d.created_at,
       u.name AS ngo_name
@@ -77,9 +92,7 @@ exports.updateDonation = (req, res) => {
   });
 };
 
-
 /* ================= DELETE DONATION ================= */
-
 exports.deleteDonation = (req, res) => {
   const donationId = req.params.id;
 
@@ -97,4 +110,3 @@ exports.deleteDonation = (req, res) => {
     res.json({ message: 'Donation deleted successfully' });
   });
 };
-

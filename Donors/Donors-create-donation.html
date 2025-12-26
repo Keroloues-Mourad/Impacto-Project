@@ -32,7 +32,7 @@
         <h2 class="mb-4">Add New Donation</h2>
 
         <div class="form-box">
-            <form id="donationForm">
+            <form id="donationForm" enctype="multipart/form-data">
 
                 <div class="mb-3">
                     <label class="form-label">Donor Type</label>
@@ -70,7 +70,12 @@
 
                 <div class="mb-3">
                     <label class="form-label">Upload Food Image (optional)</label>
-                    <input type="file" id="foodImg" class="form-control">
+                    <input 
+                        type="file" 
+                        id="foodImg" 
+                        class="form-control" 
+                        accept="image/*">
+
                 </div>
 
                 <button type="submit" class="btn w-100 mt-3 btn-custom">Submit Donation</button>
