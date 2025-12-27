@@ -1,8 +1,12 @@
 /* ===== Global Page Background ===== */
 body {
-    background: #f5f7f9;
-    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg,
+        rgba(26, 168, 109, 0.25),
+        rgba(255, 167, 143, 0.25)
+    );
+    min-height: 100vh;
 }
+
 
 /* ===== Sidebar ===== */
 .sidebar {

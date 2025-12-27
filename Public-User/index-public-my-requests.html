@@ -1,39 +1,26 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My Requests</title>
-
-    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Page CSS -->
     <link rel="stylesheet" href="/css/public-user/style-public-my-requests.css">
 </head>
-
 <body>
-
     <!-- Navbar (MATCH HOME) -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
         <div class="container">
             <a class="navbar-brand" href="./index-public-home.html">OFDP — Food Sharing</a>
-
             <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navMenu">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="./index-public-home.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">My orders</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../profile/profile.html">Profile</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="./index-public-home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">My orders</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../profile/profile.html">Profile</a></li>
                 </ul>
             </div>
         </div>
@@ -43,13 +30,8 @@
     <div class="container mt-4">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h2>My Requests</h2>
-
-            <!-- Back to Home Button -->
-            <a href="./index-public-home.html" class="btn btn-main">
-                ← Back to Home
-            </a>
+            <a href="./index-public-home.html" class="btn btn-main">← Back to Home</a>
         </div>
-
         <div class="requests-box">
             <table class="table table-striped align-middle">
                 <thead>
@@ -61,26 +43,15 @@
                         <th>Date</th>
                     </tr>
                 </thead>
-
                 <tbody id="requestsTable">
-                    <tr>
-                        <td colspan="5" class="text-center">Loading...</td>
-                    </tr>
+                    <tr><td colspan="5" class="text-center">Loading...</td></tr>
                 </tbody>
             </table>
         </div>
     </div>
 
-    <!-- CSR -->
     <script src="../js/public-user/public-my-requests.csr.js"></script>
-
-    <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Protection -->
-    <script>
-        protectPage(['customer', 'ngo']);
-    </script>
-
+    <script>protectPage(['customer', 'ngo']);</script>
 </body>
 </html>

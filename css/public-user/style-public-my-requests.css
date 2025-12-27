@@ -1,7 +1,12 @@
 /* Page background (same as home) */
 body {
-    background: #f7f7f7;
+    background: linear-gradient(135deg,
+        rgba(26, 168, 109, 0.25),
+        rgba(255, 167, 143, 0.25)
+    );
+    min-height: 100vh;
 }
+
 
 /* Requests container styled like home cards */
 .requests-box {

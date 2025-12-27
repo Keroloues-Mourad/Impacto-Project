@@ -1,6 +1,11 @@
-body { 
-    background: #f2f2f2; 
+body {
+    background: linear-gradient(135deg,
+        rgba(26, 168, 109, 0.25),
+        rgba(255, 167, 143, 0.25)
+    );
+    min-height: 100vh;
 }
+
 
 .sidebar {
     width: 240px;
