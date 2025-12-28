@@ -51,15 +51,35 @@
                 <input id="location" type="text" class="form-control">
             </div>
 
-            <button type="submit" class="btn btn-save w-100">Save Changes</button>
+            <!-- Save -->
+            <button type="submit" class="btn btn-save w-100">
+                Save Changes
+            </button>
 
-            <a href="./profile.html" class="btn btn-cancel w-100 mt-3">Cancel</a>
+            
+            <a href="./profile.html" class="btn btn-cancel w-100 mt-2">
+                Cancel
+            </a>
+
+
+
         </form>
 
     </div>
 
     <!-- Profile Edit CSR -->
+    <script>
+        document.getElementById("editForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // After saving changes, redirect to profile page
+            window.location.href = "./profile.html";
+
+        });
+    </script>
+
     <script src="../js/profile/profile-edit.csr.js"></script>
 
 </body>
+
 </html>
