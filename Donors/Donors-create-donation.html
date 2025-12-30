@@ -45,13 +45,70 @@
 
                 <div class="mb-3">
                     <label class="form-label">Food Type</label>
-                    <select id="foodType" class="form-select">
+                    <select id="foodType" class="form-select" required>
                         <option value="">Choose...</option>
-                        <option>Hot Meals</option>
-                        <option>Vegetables</option>
-                        <option>Bread</option>
+
+                        <!-- Hot Meals -->
+                        <optgroup label="🍛 Hot Meals">
+                            <option value="rice_chicken">Rice & Chicken</option>
+                            <option value="rice_meat">Rice & Meat</option>
+                            <option value="pasta">Pasta</option>
+                            <option value="grilled_chicken">Grilled Chicken</option>
+                            <option value="meat_meal">Meat Meal</option>
+                            <option value="koshari">Koshari</option>
+                            <option value="stuffed_vegetables">Stuffed Vegetables</option>
+                            <option value="soup">Soup</option>
+                        </optgroup>
+
+                        <!-- Cold Meals -->
+                        <optgroup label="🥪 Cold Meals">
+                            <option value="sandwiches">Sandwiches</option>
+                            <option value="wraps">Wraps</option>
+                            <option value="cold_pasta">Cold Pasta</option>
+                            <option value="salads">Salads</option>
+                        </optgroup>
+
+                        <!-- Bakery -->
+                        <optgroup label="🥖 Bakery">
+                            <option value="bread">Bread</option>
+                            <option value="baladi_bread">Baladi Bread</option>
+                            <option value="pastries">Pastries</option>
+                            <option value="croissant">Croissant</option>
+                            <option value="pizza_dough">Pizza Dough</option>
+                        </optgroup>
+
+                        <!-- Raw Food -->
+                        <optgroup label="🥦 Raw Food">
+                            <option value="vegetables">Vegetables</option>
+                            <option value="fruits">Fruits</option>
+                            <option value="rice_raw">Rice (Raw)</option>
+                            <option value="pasta_raw">Pasta (Raw)</option>
+                            <option value="lentils">Lentils</option>
+                            <option value="beans">Beans</option>
+                        </optgroup>
+
+                        <!-- Dairy -->
+                        <optgroup label="🥛 Dairy Products">
+                            <option value="milk">Milk</option>
+                            <option value="cheese">Cheese</option>
+                            <option value="yogurt">Yogurt</option>
+                            <option value="butter">Butter</option>
+                        </optgroup>
+
+                        <!-- Sweets -->
+                        <optgroup label="🍰 Sweets & Desserts">
+                            <option value="cake">Cake</option>
+                            <option value="cupcakes">Cupcakes</option>
+                            <option value="cookies">Cookies</option>
+                            <option value="basbousa">Basbousa</option>
+                            <option value="kunafa">Kunafa</option>
+                            <option value="baklava">Baklava</option>
+                            <option value="donuts">Donuts</option>
+                            <option value="chocolate">Chocolate</option>
+                        </optgroup>
                     </select>
                 </div>
+
 
                 <div class="mb-3">
                     <label class="form-label">Quantity</label>
@@ -70,11 +127,7 @@
 
                 <div class="mb-3">
                     <label class="form-label">Upload Food Image (optional)</label>
-                    <input 
-                        type="file" 
-                        id="foodImg" 
-                        class="form-control" 
-                        accept="image/*">
+                    <input type="file" id="foodImg" class="form-control" accept="image/*">
 
                 </div>
 
